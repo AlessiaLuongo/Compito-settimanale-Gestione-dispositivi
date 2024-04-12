@@ -8,5 +8,6 @@ public record PayloadDevice(
         String status,
 
         @NotEmpty(message = "You must specify what type of device it is")
-        String type) {
+        String type
+) {
 }

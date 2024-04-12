@@ -28,7 +28,7 @@ public class DeviceService {
     }
 
     public Device saveDevice(PayloadDevice body){
-       Device newDevice = new Device(body.status(), body.type());
+       Device newDevice = new Device(body.type(), body.status());
        return this.deviceDAO.save(newDevice);
     }
 
@@ -37,13 +37,12 @@ public class DeviceService {
     }
 
 
-    public Device findByIdAndUpdate(int id, Device body){
+    public Device findByIdAndUpdate(int id, PayloadDevice body){
         Optional<Device> optionalDevice = deviceDAO.findById(id);
 
         if (optionalDevice.isPresent()){
             Device found = optionalDevice.get();
-            found.setEmployee(optionalDevice.get().getEmployee());
-            found.setStatus(optionalDevice.get().getStatus());
+            found.setStatus(body.status());
             return this.deviceDAO.save(found);
         }else {
             throw new NotFoundException(id);

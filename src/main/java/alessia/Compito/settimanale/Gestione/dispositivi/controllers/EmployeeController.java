@@ -1,5 +1,6 @@
 package alessia.Compito.settimanale.Gestione.dispositivi.controllers;
 
+import alessia.Compito.settimanale.Gestione.dispositivi.entities.Device;
 import alessia.Compito.settimanale.Gestione.dispositivi.entities.Employee;
 import alessia.Compito.settimanale.Gestione.dispositivi.exceptions.BadRequestException;
 import alessia.Compito.settimanale.Gestione.dispositivi.payloads.NewEmployeeResponse;
@@ -11,7 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -52,5 +55,18 @@ public class EmployeeController {
         this.employeeService.findEmployeeByIdAndDelete(employeeId);
     }
 
+    @PatchMapping("/{employeeId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    private void addDevice(@PathVariable int employeeId, @RequestBody Device device){
+        this.employeeService.addADevice(employeeId, device);
+    }
 
+    @PatchMapping("/{employeeId}/avatar")
+    public Employee uploadAvatar(@RequestParam("avatar")MultipartFile file, @PathVariable int employeeId){
+        try {
+            return employeeService.uploadAvatar(employeeId, file);
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
 }

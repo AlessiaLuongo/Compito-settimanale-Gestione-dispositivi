@@ -35,7 +35,7 @@ public class DeviceController {
 
     @PutMapping("/{deviceId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Device findSingleDeviceAndUpdate(@PathVariable int deviceId, @RequestBody Device body) {
+    public Device findSingleDeviceAndUpdate(@PathVariable int deviceId, @RequestBody PayloadDevice body) {
         return this.deviceService.findByIdAndUpdate(deviceId, body);
     }
 

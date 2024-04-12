@@ -26,7 +26,7 @@ public class Employee {
     private String eMail;
     private String avatarUrl;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany
     private List<Device> devicesList = new ArrayList<>();
 
     public Employee(String username, String name, String surname, String eMail, String avatarUrl, List<Device> devicesList) {
