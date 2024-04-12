@@ -46,7 +46,7 @@ public class EmployeeController {
         return this.employeeService.findEmployeeByIdAndUpdate(employeeId, body);
     }
 
-    @DeleteMapping("/employeeId")
+    @DeleteMapping("/{employeeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     private void deleteEmployee(@PathVariable int employeeId){
         this.employeeService.findEmployeeByIdAndDelete(employeeId);

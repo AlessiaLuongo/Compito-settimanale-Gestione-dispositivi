@@ -39,7 +39,7 @@ public class DeviceController {
         return this.deviceService.findByIdAndUpdate(deviceId, body);
     }
 
-    @DeleteMapping("/deviceId")
+    @DeleteMapping("/{deviceId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     private void findSingleDeviceAndDelete(@PathVariable int deviceId){
         this.deviceService.findByIdAndDelete(deviceId);
