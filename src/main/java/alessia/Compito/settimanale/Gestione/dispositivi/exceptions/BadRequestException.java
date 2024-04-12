@@ -1,11 +1,15 @@
 package alessia.Compito.settimanale.Gestione.dispositivi.exceptions;
 
+import lombok.Getter;
 import org.springframework.validation.ObjectError;
 
+import java.util.Collection;
 import java.util.List;
 
+@Getter
 public class BadRequestException extends RuntimeException{
-    private List<ObjectError> errorsList;
+
+    public List<ObjectError> errorsList;
     public BadRequestException(String message){
         super(message);
     }
@@ -14,4 +18,6 @@ public class BadRequestException extends RuntimeException{
         super("There are some errors in the payload-validation");
         this.errorsList = errorsList;
     }
+
+
 }
