@@ -1,4 +1,4 @@
 package alessia.Compito.settimanale.Gestione.dispositivi.controllers;
 
-public class PayloadDevice {
+public class DeviceController {
 }

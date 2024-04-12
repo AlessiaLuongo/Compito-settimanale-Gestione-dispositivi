@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,9 +21,8 @@ public class EmployeeService {
     @Autowired
     EmployeeDAO employeeDAO;
 
-    public Page<Employee> getAllEmployees(int page, int size, String sortBy){
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
-        return this.employeeDAO.findAll(pageable);
+    public List<Employee> getAllEmployees(){
+        return this.employeeDAO.findAll();
     }
 
     public Employee saveEmployee(PayloadEmployee body){
