@@ -1,6 +1,6 @@
 package alessia.Compito.settimanale.Gestione.dispositivi.services;
 
-import alessia.Compito.settimanale.Gestione.dispositivi.controllers.PayloadEmployee;
+import alessia.Compito.settimanale.Gestione.dispositivi.payloads.PayloadEmployee;
 import alessia.Compito.settimanale.Gestione.dispositivi.entities.Employee;
 import alessia.Compito.settimanale.Gestione.dispositivi.exceptions.NotFoundException;
 import alessia.Compito.settimanale.Gestione.dispositivi.repositories.EmployeeDAO;
