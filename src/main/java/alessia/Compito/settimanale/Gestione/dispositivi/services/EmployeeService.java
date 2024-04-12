@@ -72,12 +72,16 @@ public class EmployeeService {
     public void addADevice(int employeeId, Device device){
         Employee employee = employeeDAO.findById(employeeId).orElseThrow(() -> new NotFoundException(employeeId));
 
-        List<Device> lista = employee.getDevicesList();
-        lista.add(device);
-        employee.setDevicesList(lista);
+        device.setEmployee(employee);
 
-        this.employeeDAO.save(employee);
+        List<Device> devicesList = employee.getDevicesList();
+        devicesList.add(device);
+        employee.setDevicesList(devicesList);
+
+        employeeDAO.save(employee);
         }
+
+
 
         public Employee uploadAvatar(int id, MultipartFile file)throws IOException {
         Employee found = this.findEmployeeById(id);
